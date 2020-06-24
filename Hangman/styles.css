@@ -1,0 +1,42 @@
+body{
+    text-align:center;
+    /*background-image: url("https://live.staticflickr.com/3084/2660886741_ea4b000d2a_b.jpg");*/
+    background-image: url("https://p0.pxfuel.com/preview/151/784/926/walt-disney-disneyland-disney-world-castle.jpg");
+    background-size: cover;
+    display: grid;
+    height: 100%;
+    place-items: center center;
+}
+
+h1 {
+    font-size: 80px;
+    font-style: oblique;
+    text-shadow: 3px 2px #1b2557;
+}
+
+.letter {
+    font-family: optima, candara, garamond;
+    font-size:60px;
+}
+
+.wrong {
+    font-family: optima, candara, garamond;
+    font-size:30px;
+}
+
+input{
+    font-family: optima, candara, garamond;
+    padding: 10px 16px;
+    border-radius: 7px;
+    background: rgba(255,255,255,0.65);
+    text-align: center;
+}
+
+.button{
+    font-family: optima, candara, garamond;
+    font-size: 15px;
+    background-color: #008CBA;
+    color: white; 
+    border-radius: 8px;
+    padding: 10px 16px;
+}  
