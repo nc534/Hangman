@@ -27,12 +27,12 @@ var remainingLetters = title.length;
 var wrong = document.getElementById("wrong");
 var guessed = [];
 var guessesLeft = 6;
-var images = ["https://upload.wikimedia.org/wikipedia/commons/d/d6/Hangman-6.png",
-            "https://upload.wikimedia.org/wikipedia/commons/6/6b/Hangman-5.png",
-            "https://upload.wikimedia.org/wikipedia/commons/2/27/Hangman-4.png",
-            "https://upload.wikimedia.org/wikipedia/commons/9/97/Hangman-3.png",
-            "https://upload.wikimedia.org/wikipedia/commons/7/70/Hangman-2.png",
-            "https://upload.wikimedia.org/wikipedia/commons/3/30/Hangman-1.png" ]
+var images = ["https://drive.google.com/uc?export=view&id=1H1HWr5tPybT0dWvVPsDAqMx02t04cX-p",
+            "https://drive.google.com/uc?export=view&id=1d4XbkdICo4_xFIOicLVqiyF2GIiDOgqv",
+            "https://drive.google.com/uc?export=view&id=1FWS1RuJpTJsr_7qtcivH0OY2uxWiTwhr",
+            "https://drive.google.com/uc?export=view&id=1SSnYyh0FEvs4n6zNTcBJK1VSnHn-Jqk-",
+            "https://drive.google.com/uc?export=view&id=15T-UetlsKrqF4vUrtEyKrc1D9d9wu7zZ",
+            "https://drive.google.com/uc?export=view&id=13wIufN9PKrs3BMzRH6RdaKyUUR9cHa9T" ]
 
 function guessedLetter(){
     //had to be inside
