@@ -1,14 +1,12 @@
 /*Things to fix:
     repeated alert
-    not have button also centered
-    dont show wrong letter again
     maybe show incorrect guesses left on html pg
-    prob draw your own hangman and share with google drive
     maybe try multiwords movie titles
     replay option
 */
 
-var movies = ["MULAN", "ALADDIN", "HERCULES", "CINDERELLA", "POCAHONTAS", "PINOCCHIO", "TARZAN", "BAMBI", "TANGLED", "FROZEN"];
+var movies = ["MULAN", "ALADDIN", "HERCULES", "CINDERELLA", "POCAHONTAS", "PINOCCHIO", "TARZAN", "BAMBI", "TANGLED", "FROZEN", "BOLT", "ONWARD",
+              "COCO", "BRAVE", "UP", "DINOSAUR", "DUMBO", "ENCHANTED", "HOLES", "FANTASIA", "ANNIE", "MALEFICENT", "MOANA", "RATATOUILLE", "CARS"];
 var title = movies[Math.floor(Math.random() * movies.length)];
 
 var space = document.getElementById("space");
@@ -37,6 +35,7 @@ var images = ["https://drive.google.com/uc?export=view&id=1H1HWr5tPybT0dWvVPsDAq
 function guessedLetter(){
     //had to be inside
     var letter = document.getElementById("letter").value.toUpperCase();
+    var isCorrect = false;
 
     if(remainingLetters > 0){
     
@@ -45,8 +44,7 @@ function guessedLetter(){
             if(title[j] === letter){
                 titleArray[j] = letter;
                 remainingLetters--;
-                console.log("Correct!");
-                var isCorrect = true;
+                isCorrect = true;
             }
         }else{
             alert("You guessed '" + letter + "' already.");
@@ -54,15 +52,29 @@ function guessedLetter(){
         }
     }
 
-        if(!isCorrect && guessesLeft != 0){
-            console.log("Wrong");
+    function isRepeat(){
+        if(guessed.length >= 1){ 
+            for(i = 0; i < guessed.length; i++){ 
+                if(letter == guessed[i]){ 
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+        
+    if(!isCorrect && guessesLeft != 0){
+        if(!isRepeat()){
             guessed.push(document.getElementById("letter").value.toUpperCase());
             wrong.innerHTML = "";
             wrong.innerHTML = "Wrong guesses: " + guessed.join(", ");
             document.getElementById("hangman").src = images[guessesLeft - 1];
             guessesLeft--;
             alert("Not a letter in the movie title. You have " + guessesLeft + " incorrect guesses left.");
+        }else{
+            alert("You guessed '" + letter + "' already.");
         }
+    }
 
         space.innerHTML = titleArray.join(" ");
     }
