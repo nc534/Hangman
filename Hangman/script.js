@@ -1,27 +1,32 @@
 /*Things to fix:
-    repeated alert
-    maybe show incorrect guesses left on html pg
-    maybe try multiwords movie titles
     replay option
 */
 
 var movies = ["MULAN", "ALADDIN", "HERCULES", "CINDERELLA", "POCAHONTAS", "PINOCCHIO", "TARZAN", "BAMBI", "TANGLED", "FROZEN", "BOLT", "ONWARD",
-              "COCO", "BRAVE", "UP", "DINOSAUR", "DUMBO", "ENCHANTED", "HOLES", "FANTASIA", "ANNIE", "MALEFICENT", "MOANA", "RATATOUILLE", "CARS"];
+              "COCO", "BRAVE", "UP", "DINOSAUR", "DUMBO", "ENCHANTED", "HOLES", "FANTASIA", "ANNIE", "MALEFICENT", "MOANA", "RATATOUILLE", "CARS",
+              "BROTHER BEAR", "THE LITTLE MERMAID", "BEAUTY AND THE BEAST", "THE LION KING", "THE PRINCESS AND THE FROG", "THE PRINCESS DIARIES",
+              "BRIDGE TO TERABITHIA", "SLEEPING BEAUTY", "FINDING NEMO", "TOY STORY", "ALICE IN WONDERLAND", "BIG HERO 6", "101 DALMATIANS"];
 var title = movies[Math.floor(Math.random() * movies.length)];
 
 var space = document.getElementById("space");
 var titleArray = [];
+var empty = 0;
 
 function blankSpace(){
     for(var i = 0; i < title.length; i++){
-        titleArray[i] = " _ ";
+        if(title[i] === " "){
+            titleArray[i] = "\xa0"; 
+            empty++;
+        }else{
+            titleArray[i] = " _ "; 
+        }
     }
     space.innerHTML = titleArray.join(" ");
 }
 
 blankSpace();
 
-var remainingLetters = title.length;
+var remainingLetters = title.length - empty;
 var wrong = document.getElementById("wrong");
 var guessed = [];
 var guessesLeft = 6;
@@ -36,8 +41,15 @@ function guessedLetter(){
     //had to be inside
     var letter = document.getElementById("letter").value.toUpperCase();
     var isCorrect = false;
+    var isValid = true;
+    var showAlert = true;
+    
+    if(letter === "" || letter === " " || /[A-Z0-9]/.test(letter) === false){
+        isValid = false;
+        alert("Please input a letter or number");
+    }
 
-    if(remainingLetters > 0){
+    if(remainingLetters > 0 && isValid){
     
     for(var j = 0; j < title.length; j++){
         if(letter != titleArray[j]){
@@ -47,7 +59,10 @@ function guessedLetter(){
                 isCorrect = true;
             }
         }else{
-            alert("You guessed '" + letter + "' already.");
+            if(showAlert === true){
+                    alert("You guessed '" + letter + "' already.");
+                    showAlert = false;
+            }
             isCorrect = true;
         }
     }
@@ -87,7 +102,7 @@ function guessedLetter(){
     }
 
     if(remainingLetters == 0){
-        alert("Congrats! You found all the words!");
+        alert("Congrats! You got the movie!");
         document.getElementById("button").disabled = true;
     }
 }
