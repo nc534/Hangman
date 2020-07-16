@@ -21,6 +21,7 @@ h1 {
 .wrong {
     font-family: optima, candara, garamond;
     font-size:30px;
+    background-color: rgba(255,255,255,0.3);
 }
 
 input{
